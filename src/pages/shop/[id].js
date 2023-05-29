@@ -6,33 +6,21 @@ const Product = ({ product, products }) => {
 };
 
 export const getStaticPaths = async () => {
-  try {
-    const products = await ShopService.getAll();
-    return {
-      paths: products.map((product) => ({
-        params: { id: product.id.toString() },
-      })),
-      fallback: "blocking",
-    };
-  } catch {
-    return {
-      paths: null,
-    };
-  }
+  const products = await ShopService.getAll();
+  return {
+    paths: products.map((product) => ({
+      params: { id: product.id.toString() },
+    })),
+    fallback: "blocking",
+  };
 };
 export const getStaticProps = async ({ params }) => {
-  try {
-    const products = await ShopService.getAll();
-    const product = await ShopService.getById(String(params?.id));
-    return {
-      props: { product, products },
-      revalidate: 60,
-    };
-  } catch {
-    return {
-      props: null,
-    };
-  }
+  const products = await ShopService.getAll();
+  const product = await ShopService.getById(String(params?.id));
+  return {
+    props: { product, products },
+    revalidate: 60,
+  };
 };
 
 export default Product;
