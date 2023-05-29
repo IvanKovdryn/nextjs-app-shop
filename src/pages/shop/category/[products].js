@@ -6,13 +6,17 @@ const CategoryPage = ({ products }) => {
 };
 
 export const getStaticPaths = async () => {
-  const categories = await ShopService.getCategories();
-  return {
-    paths: categories.map((products) => ({
-      params: { products: products },
-    })),
-    fallback: "blocking",
-  };
+  try {
+    const categories = await ShopService.getCategories();
+    return {
+      paths: categories.map((category) => ({
+        params: { products: category },
+      })),
+      fallback: false,
+    };
+  } catch {
+    return { paths: [], fallback: false };
+  }
 };
 
 export const getStaticProps = async ({ params }) => {

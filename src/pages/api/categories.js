@@ -1,5 +1,3 @@
-import { categories } from "./data/categories";
-
 export default function handler(req, res) {
-  res.status(200).json(categories);
+  res.status(200).json(["electronics", "jewelery", "mens", "womens"]);
 }
