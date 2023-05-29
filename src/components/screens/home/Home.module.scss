@@ -1,0 +1,25 @@
+.sliderwrapper {
+  overflow: hidden;
+  width: 95%;
+}
+.slider {
+  transition: all 0.5s ease;
+}
+.slidefirst {
+  left: -100%;
+}
+.slidesecond {
+  left: 0;
+}
+.slidethird {
+  right: -100%;
+}
+.buttons {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.active {
+  z-index: 1;
+}
