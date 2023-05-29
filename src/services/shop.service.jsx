@@ -2,12 +2,11 @@ import axios from "axios";
 
 export const ShopService = {
   async getAll() {
-    const { data } = await axios.get(`https://fakestoreapi.com/products`);
+    const { data } = await axios.get(`${process.env.API_HOST_FAKE}/products`);
     return data;
   },
-
   async getById(id) {
-    const { data } = await axios.get("https://fakestoreapi.com/products", {
+    const { data } = await axios.get(`${process.env.API_HOST_FAKE}/products`, {
       params: {
         id,
       },
@@ -28,7 +27,14 @@ export const ShopService = {
       .catch((error) => {
         console.log(error);
       });
-
+    return data;
+  },
+  async sendForm(dataFromForm) {
+    const { data } = await axios({
+      url: `${process.env.NEXT_PUBLIC_API}/form`,
+      method: "POST",
+      data: dataFromForm,
+    });
     return data;
   },
 };

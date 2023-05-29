@@ -38,7 +38,7 @@ export const Checkout = () => {
 
       try {
         const { data } = await axios({
-          url: "/api/form",
+          url: `${process.env.API_HOST}/form`,
           method: "POST",
           data: dataFromForm,
         });

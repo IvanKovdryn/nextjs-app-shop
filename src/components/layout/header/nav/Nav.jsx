@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { ShopService } from "@/services/shop.service";
 
 const Nav = () => {
   const router = useRouter();
@@ -17,10 +18,8 @@ const Nav = () => {
     call ? (body.style.overflowY = "hidden") : (body.style.overflowY = "auto");
   }, [call]);
   const navItems = ["home", "shop", "about", "contacts"];
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (call) {
       const dataFromForm = {
         name: e.target.name.value,
@@ -29,11 +28,7 @@ const Nav = () => {
       };
 
       try {
-        const { data } = await axios({
-          url: "/api/form",
-          method: "POST",
-          data: dataFromForm,
-        });
+        const data = await ShopService.sendForm(dataFromForm);
         setSuccess(true);
         console.log("result: ", ...data);
       } catch (error) {

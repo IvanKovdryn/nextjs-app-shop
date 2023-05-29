@@ -23,11 +23,7 @@ export default function Form() {
     };
 
     try {
-      const { data } = await axios({
-        url: "/api/form",
-        method: "POST",
-        data: dataFromForm,
-      });
+      const { data } = await ShopService.sendForm(dataFromForm);
       setShowMassage(true);
       dispatch(setData(data));
       console.log("result: ", ...data);
