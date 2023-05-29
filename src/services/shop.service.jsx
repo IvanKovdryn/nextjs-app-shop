@@ -2,11 +2,11 @@ import axios from "axios";
 
 export const ShopService = {
   async getAll() {
-    const { data } = await axios.get(`${process.env.API_HOST_FAKE}/products`);
+    const { data } = await axios.get(`https://fakestoreapi.com/products`);
     return data;
   },
   async getById(id) {
-    const { data } = await axios.get(`${process.env.API_HOST_FAKE}/products`, {
+    const { data } = await axios.get(`https://fakestoreapi.com/products`, {
       params: {
         id,
       },
@@ -15,7 +15,7 @@ export const ShopService = {
   },
   async getCategories() {
     const { data } = await axios
-      .get(`${process.env.API_HOST}/categories`)
+      .get(`http://localhost:3000/api/categories`)
       .catch((error) => {
         console.log(error);
       });
@@ -23,7 +23,7 @@ export const ShopService = {
   },
   async getCategory(products) {
     const { data } = await axios
-      .get(`${process.env.API_HOST}/${products}`)
+      .get(`http://localhost:3000/api/${products}`)
       .catch((error) => {
         console.log(error);
       });
@@ -31,7 +31,7 @@ export const ShopService = {
   },
   async sendForm(dataFromForm) {
     const { data } = await axios({
-      url: `${process.env.NEXT_PUBLIC_API}/form`,
+      url: `api/form`,
       method: "POST",
       data: dataFromForm,
     });
