@@ -19,6 +19,7 @@ export const Home = ({ products }) => {
               width={410}
               height={646}
               alt="img"
+              priority="true"
             />
             <Image
               className="absolute w-[45%] top-16 right-[-22%] rounded-lg"

@@ -55,7 +55,13 @@ const Nav = () => {
     >
       <div className="max-w-[1200px] mx-auto relative grid grid-cols-3 items-center h-full">
         <div className="flex items-center gap-2">
-          <Image src="/nav/logo.svg" width={20} height={20} alt="img" />
+          <Image
+            src="/nav/logo.svg"
+            width={0}
+            height={0}
+            alt="img"
+            className="w-[19px] h-auto"
+          />
           <span className="text-lg">Womazing</span>
         </div>
         <div className="flex items-center h-full justify-self-center">
