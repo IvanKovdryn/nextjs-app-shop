@@ -13,14 +13,6 @@ export const ShopService = {
     });
     return data[id - 1];
   },
-  async getCategories() {
-    const { data } = await axios
-      .get(`${process.env.API_HOST}/categories`)
-      .catch((error) => {
-        console.log("erroooor: ", error);
-      });
-    return data;
-  },
   async getCategory(products) {
     const { data } = await axios
       .get(`${process.env.API_HOST}/${products}`)
