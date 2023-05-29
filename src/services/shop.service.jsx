@@ -16,7 +16,7 @@ export const ShopService = {
   },
   async getCategories() {
     const { data } = await axios
-      .get("http://localhost:3000/api/categories")
+      .get(`${process.env.API_HOST}/categories`)
       .catch((error) => {
         console.log(error);
       });
@@ -24,7 +24,7 @@ export const ShopService = {
   },
   async getCategory(products) {
     const { data } = await axios
-      .get(`http://localhost:3000/api/${products}`)
+      .get(`${process.env.API_HOST}/${products}`)
       .catch((error) => {
         console.log(error);
       });
