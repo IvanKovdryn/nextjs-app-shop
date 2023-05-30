@@ -8,6 +8,7 @@ import { setDataCheckout } from "@/store/slices/dataSlice";
 import { addProducts } from "@/store/slices/productsSlice";
 import { clearCart } from "@/store/slices/cartSlice";
 import axios from "axios";
+import { ShopService } from "@/services/shop.service";
 
 export const Checkout = () => {
   const cart = useSelector((state) => state.cart.items);
