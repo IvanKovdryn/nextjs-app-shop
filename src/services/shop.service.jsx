@@ -31,7 +31,7 @@ export const ShopService = {
   },
   async sendForm(dataFromForm) {
     const { data } = await axios({
-      url: `${process.env.API_HOST}/form`,
+      url: `/api/form`,
       method: "POST",
       data: dataFromForm,
     });
