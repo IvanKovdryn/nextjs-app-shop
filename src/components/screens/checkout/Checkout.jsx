@@ -37,11 +37,7 @@ export const Checkout = () => {
       };
 
       try {
-        const { data } = await axios({
-          url: `${process.env.NEXT_PUBLIC_API}/form`,
-          method: "POST",
-          data: dataFromForm,
-        });
+        const data = await ShopService.sendForm(dataFromForm);
         setSuccess(true);
         dispatch(setDataCheckout(data));
         dispatch(clearCart());
