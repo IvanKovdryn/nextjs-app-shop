@@ -21,6 +21,7 @@ const Call = () => {
       try {
         const data = await ShopService.sendForm(dataFromForm);
         setSuccess(true);
+        document.querySelector("form").reset();
         console.log("result: ", ...data);
       } catch (error) {
         console.log("error: ", error);
@@ -29,9 +30,6 @@ const Call = () => {
       setTimeout(() => {
         setCall(false);
       }, 5000);
-      setTimeout(() => {
-        document.querySelector("form").reset();
-      }, 1000);
     }
   };
   return (
