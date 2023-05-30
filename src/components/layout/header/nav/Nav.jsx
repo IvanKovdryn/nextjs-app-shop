@@ -58,12 +58,14 @@ const Nav = () => {
                 : styles.cart
             }
           >
-            <Image src="/nav/cart.svg" width={20} height={20} alt="img" />
-            {cart.length > 0 && (
-              <p className="absolute bottom-[6px] left-[6px] bg-red-500 text-white text-xs w-[18px] h-[18px] flex items-center justify-center rounded-full">
-                {cart.length}
-              </p>
-            )}
+            <span className="rounded-full w-[50px] h-[50px] px-[10px] flex items-center justify-center relative transition-all">
+              <Image src="/nav/cart.svg" width={20} height={20} alt="img" />
+              {cart.length > 0 && (
+                <span className="absolute bottom-[6px] left-[6px] bg-red-500 text-white text-xs w-[18px] h-[18px] flex items-center justify-center rounded-full">
+                  {cart.length}
+                </span>
+              )}
+            </span>
           </Link>
         </div>
       </div>

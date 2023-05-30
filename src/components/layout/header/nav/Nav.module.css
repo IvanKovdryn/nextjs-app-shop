@@ -5,9 +5,7 @@
   justify-content: center;
   transition: all 0.2s ease;
 }
-.cart:hover,
-.cart:hover,
-.user:hover {
+.cart:hover > span {
   background-color: rgb(255, 214, 214);
 }
 .number:hover > span,
@@ -16,18 +14,6 @@
 }
 .number {
   height: 100%;
-  transition: all 0.2s ease;
-}
-.cart,
-.user {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  padding: 0 10px;
   transition: all 0.2s ease;
 }
 .active > span {
