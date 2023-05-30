@@ -1,21 +1,21 @@
 .a {
-  padding: 0 15px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
 }
-.a:hover,
 .cart:hover,
-.number:hover,
 .cart:hover,
 .user:hover {
   background-color: rgb(255, 214, 214);
 }
+.number:hover > span,
+.a:hover > span {
+  background-color: rgb(255, 214, 214);
+}
 .number {
   height: 100%;
-  padding: 0 10px;
   transition: all 0.2s ease;
 }
 .cart,
@@ -30,6 +30,6 @@
   padding: 0 10px;
   transition: all 0.2s ease;
 }
-.active {
+.active > span {
   background-color: rgb(255, 214, 214);
 }

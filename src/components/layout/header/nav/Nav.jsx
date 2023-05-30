@@ -5,43 +5,14 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { ShopService } from "@/services/shop.service";
+import Call from "../../Call";
 
 const Nav = () => {
   const router = useRouter();
   const cart = useSelector((state) => state.cart.items);
-  const [call, setCall] = useState(false);
-  const [success, setSuccess] = useState(false);
-
-  useEffect(() => {
-    const body = document.querySelector("body");
-    call ? (body.style.overflowY = "hidden") : (body.style.overflowY = "auto");
-  }, [call]);
   const navItems = ["home", "shop", "about", "contacts"];
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (call) {
-      const dataFromForm = {
-        name: e.target.name.value,
-        email: e.target.email.value,
-        tel: e.target.tel.value,
-      };
+  const [call, setCall] = useState(false);
 
-      try {
-        const data = await ShopService.sendForm(dataFromForm);
-        setSuccess(true);
-        console.log("result: ", ...data);
-      } catch (error) {
-        console.log("error: ", error);
-      }
-
-      setTimeout(() => {
-        setCall(false);
-      }, 5000);
-      setTimeout(() => {
-        document.querySelector("form").reset();
-      }, 1000);
-    }
-  };
   return (
     <nav
       style={{ boxShadow: "0 0 20px -14px #000" }}
@@ -50,7 +21,7 @@ const Nav = () => {
       <div className="max-w-[1200px] mx-auto relative grid grid-cols-3 items-center h-full">
         <div className="flex items-center gap-2">
           <Image
-            src="/public/nav/logo.svg"
+            src="/nav/logo.svg"
             width={0}
             height={0}
             alt="img"
@@ -71,84 +42,14 @@ const Nav = () => {
               }
               href={item === "home" ? "/" : `/${item}`}
             >
-              {item[0].toUpperCase() + item.slice(1)}
+              <span className="py-[10px] px-[20px] mx-[2px] flex items-center rounded-lg">
+                {item[0].toUpperCase() + item.slice(1)}
+              </span>
             </Link>
           ))}
         </div>
         <div className="flex items-center gap-1 h-full justify-self-end">
-          <button onClick={() => setCall(true)} className={styles.number}>
-            +7 (495) 823-54-12
-          </button>
-          <div
-            onClick={(e) => {
-              if (e.target.tagName === "DIV") {
-                setSuccess(false);
-                setCall(false);
-              }
-            }}
-            className={`${
-              call
-                ? "opacity-100 pointer-events-auto"
-                : "pointer-events-none opacity-0"
-            } fixed pb-[100px] z-50 w-[100vw] h-[100vh] top-0 left-0 transition-all flex items-center justify-center bg-red-200/95`}
-          >
-            <form
-              onSubmit={handleSubmit}
-              className={`${
-                success
-                  ? "pointer-events-none opacity-0"
-                  : "opacity-100 pointer-events-auto"
-                  ? !call
-                  : "pointer-events-none opacity-0"
-              } flex flex-col gap-2 items-center bg-red-100 transition-all p-12 rounded-xl`}
-            >
-              <p className="text-xl font-semibold mb-[10px]">
-                Замовити зворотній дзвінок
-              </p>
-              <input
-                className="px-[20px] py-[7px] w-full rounded-md border-2 focus:bg-blue-50 border-b-4 outline-none"
-                type="text"
-                id="name"
-                name="name"
-                maxLength="20"
-                minLength="3"
-                placeholder="Name"
-                required
-              />
-              <input
-                className="px-[20px] py-[7px] w-full rounded-md border-2 focus:bg-blue-50 border-b-4 outline-none"
-                type="email"
-                id="email"
-                name="email"
-                maxLength="20"
-                minLength="3"
-                placeholder="E-mail"
-                required
-              />
-              <input
-                className="px-[20px] py-[7px] w-full rounded-md border-2 focus:bg-blue-50 border-b-4 outline-none"
-                type="tel"
-                id="tel"
-                name="tel"
-                maxLength="20"
-                minLength="3"
-                placeholder="Phone"
-                required
-              />
-              <button className="mt-[15px] px-[20px] py-[7px] w-[75%] rounded-md text-white font-medium bg-red-400 hover:bg-red-500 transition-all flex items-center justify-center">
-                Замовити дзвінок
-              </button>
-            </form>
-            <div
-              className={`${
-                success
-                  ? "opacity-100 pointer-events-auto"
-                  : "pointer-events-none opacity-0"
-              } absolute text-xl font-semibold transition-all bg-red-100 p-12 rounded-xl`}
-            >
-              Чудово! Скоро ми вам передзвонимо
-            </div>
-          </div>
+          <Call />
           <Link
             href="/cart"
             className={
