@@ -76,7 +76,8 @@ const Cart = () => {
                       currency: "EUR",
                     }).format(item.price)}
                   </span>
-                  <span>
+                  <div>
+                    <span className="text-gray-400 pl-2">max 20</span>
                     <input
                       type="number"
                       min={1}
@@ -119,7 +120,7 @@ const Cart = () => {
                         );
                       }}
                     />
-                  </span>
+                  </div>
                   <span>{item.size}</span>
                   <span>
                     {new Intl.NumberFormat("de-DE", {

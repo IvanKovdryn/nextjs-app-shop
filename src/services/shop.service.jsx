@@ -2,16 +2,24 @@ import axios from "axios";
 
 export const ShopService = {
   async getAll() {
-    const { data } = await axios.get(`https://fakestoreapi.com/products`);
+    const { data } = await axios.get(`${process.env.API_HOST_FAKE}/products`);
     return data;
   },
   async getById(id) {
-    const { data } = await axios.get(`https://fakestoreapi.com/products`, {
+    const { data } = await axios.get(`${process.env.API_HOST_FAKE}/products`, {
       params: {
         id,
       },
     });
     return data[id - 1];
+  },
+  async getCategories() {
+    const { data } = await axios
+      .get(`${process.env.API_HOST}/categories`)
+      .catch((error) => {
+        console.log("erroooor: ", error);
+      });
+    return data;
   },
   async getCategory(products) {
     const { data } = await axios
@@ -23,7 +31,7 @@ export const ShopService = {
   },
   async sendForm(dataFromForm) {
     const { data } = await axios({
-      url: `api/form`,
+      url: `${process.env.API_HOST}/form`,
       method: "POST",
       data: dataFromForm,
     });

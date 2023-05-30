@@ -8,8 +8,10 @@
 }
 .a:hover,
 .cart:hover,
-.number:hover {
-  color: #ff0000;
+.number:hover,
+.cart:hover,
+.user:hover {
+  background-color: rgb(255, 214, 214);
 }
 .number {
   height: 100%;
@@ -28,14 +30,6 @@
   padding: 0 10px;
   transition: all 0.2s ease;
 }
-.cart:hover,
-.user:hover {
-  background-color: rgb(233, 207, 207);
-}
-.cart.iconactive,
-.user.iconactive {
-  background-color: rgb(233, 207, 207);
-}
 .active {
-  color: #ff0000;
+  background-color: rgb(255, 214, 214);
 }

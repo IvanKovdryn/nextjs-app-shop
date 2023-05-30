@@ -4,7 +4,6 @@ import styles from "./Nav.module.css";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { ShopService } from "@/services/shop.service";
 
 const Nav = () => {
@@ -51,7 +50,7 @@ const Nav = () => {
       <div className="max-w-[1200px] mx-auto relative grid grid-cols-3 items-center h-full">
         <div className="flex items-center gap-2">
           <Image
-            src="/nav/logo.svg"
+            src="/public/nav/logo.svg"
             width={0}
             height={0}
             alt="img"
@@ -91,7 +90,7 @@ const Nav = () => {
               call
                 ? "opacity-100 pointer-events-auto"
                 : "pointer-events-none opacity-0"
-            } fixed pb-[100px] z-50 w-[100vw] h-[100vh] top-0 left-0 transition-all flex items-center justify-center bg-red-300/95`}
+            } fixed pb-[100px] z-50 w-[100vw] h-[100vh] top-0 left-0 transition-all flex items-center justify-center bg-red-200/95`}
           >
             <form
               onSubmit={handleSubmit}
@@ -154,7 +153,7 @@ const Nav = () => {
             href="/cart"
             className={
               router.asPath === "/cart"
-                ? `${styles.cart} ${styles.iconactive}`
+                ? `${styles.cart} ${styles.active}`
                 : styles.cart
             }
           >

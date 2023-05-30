@@ -7,7 +7,7 @@ const CategoryPage = ({ products }) => {
 
 export const getStaticPaths = async () => {
   try {
-    const categories = ["electronics", "jewelery", "mens", "womens"];
+    const categories = await ShopService.getCategories();
     return {
       paths: categories.map((category) => ({
         params: { products: category },

@@ -6,7 +6,7 @@ const Layout = ({ children, title, description }) => {
   return (
     <>
       <Meta title={title} description={description} />
-      <div className="max-w-[1220px] mx-auto relative flex flex-col justify-between gap-[175px] px-[10px] min-h-[100vh]">
+      <div className="max-w-[1220px] mx-auto relative flex flex-col justify-between gap-[150px] px-[10px] min-h-[100vh]">
         <Header />
         {children}
         <Footer />
