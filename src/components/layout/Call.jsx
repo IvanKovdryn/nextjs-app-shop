@@ -21,7 +21,6 @@ const Call = () => {
       try {
         const data = await ShopService.sendForm(dataFromForm);
         setSuccess(true);
-        document.querySelector("form").reset();
         console.log("result: ", ...data);
       } catch (error) {
         console.log("error: ", error);
@@ -29,6 +28,8 @@ const Call = () => {
 
       setTimeout(() => {
         setCall(false);
+        setSuccess(false);
+        document.querySelector("form").reset();
       }, 5000);
     }
   };
@@ -44,6 +45,7 @@ const Call = () => {
           if (e.target.tagName === "DIV") {
             setSuccess(false);
             setCall(false);
+            document.querySelector("form").reset();
           }
         }}
         className={`${
