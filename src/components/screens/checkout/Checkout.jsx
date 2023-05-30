@@ -46,8 +46,6 @@ export const Checkout = () => {
       } catch (error) {
         console.log("error: ", error);
       }
-
-      document.querySelector("form").reset();
     }
   };
 
